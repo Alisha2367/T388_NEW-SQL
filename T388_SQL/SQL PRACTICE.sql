@@ -132,8 +132,46 @@ update employee set address = "thane";
 select * from employee;
 update employee set address = "dombivli"
 where department = "IT";
-update employee set title = "MR" where gender = "male";
-update employee set title = "MRS" where gender = "Female";
+update employee set title = "MR." where gender = "male";
+update employee set title = "MRs." where gender = "Female";
 update employee set bonus = salary*0.05;
 select * from employee;
 
+use t388;
+create table kisan_Info
+(ID int unique not null,
+name varchar(50) unique not null,
+age int check (age<=18),
+email_ID varchar(40) default "dummy@gmail.com"
+);
+desc kisan_Info;
+insert into kisan_Info
+values 
+(101,"Bhagwandas",16,default);
+select * from kisan_Info;
+drop table kisan_info;
+
+use t388;
+create table kisan_Info
+(ID int unique not null,
+name varchar(50) unique not null,
+age int check (age>=18),
+email_ID varchar(40) default "dummy@gmail.com"
+);
+desc kisan_Info;
+insert into kisan_Info
+values 
+(101,"Bhagwandas",26,default);
+insert into kisan_Info
+values 
+(104,"Aryaa",24,default);
+select * from kisan_Info;
+
+select distinct department from employee; 
+select distinct gender from employee;
+alter table kisan_info modify age int check (age>=20);
+use t388;
+select * from employee 
+where department ="IT" or department ="Finance";
+select * from employee 
+where department in ("IT","FINANCE");
